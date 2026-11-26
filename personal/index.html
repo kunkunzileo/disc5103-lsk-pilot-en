@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163854"><title>Fictional floor rerouting exercise · DISC 5103</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./floor-offline.js"></script><script defer src="./routing.js"></script><script defer src="./map.js"></script><script defer src="./app.js"></script>
+</head><body><main>
+  <header><p class="kicker">DISC 5103 / Group 4</p><h1>Fictional floor rerouting exercise</h1>
+    <p class="sub">Choose one of 18 classrooms and compare walking routes to the two exits.</p>
+    <a class="local-entry" href="../index.html">Back to the LSK ground-floor map</a></header>
+  <p id="error" role="alert" hidden></p>
+  <div id="work" class="layout" aria-busy="true">
+    <section class="start-card">
+      <label for="room">Starting room</label>
+      <select id="room"><option value="">Choose a classroom</option></select>
+      <div class="reading" aria-live="polite">
+        <h2 id="dest">Choose a room to see its nearest exit</h2>
+        <p class="metric"><b id="distance">—</b><span id="units"></span></p>
+        <p id="change"></p><p id="baseline" class="note"></p><p id="ties" class="note"></p>
+      </div>
+    </section>
+    <section class="map-card">
+      <div class="map-head"><h2>Teaching floor plan</h2>
+        <div class="seg" role="group" aria-label="Floor view"><button id="v2" aria-pressed="true">2D</button><button id="v3" aria-pressed="false">3D</button></div></div>
+      <div class="map-window" id="viewport"><canvas id="floor-map" role="img" aria-label="Fictional teaching floor"></canvas></div>
+      <div class="tools"><span class="legend"><span><i class="key-line"></i> Route</span><span><i class="key-door"></i> Door</span><span><i class="key-block"></i> Closure</span></span>
+        <div class="tool-btns"><button id="zoom" title="Switch between a close-up and the whole floor" aria-pressed="false">Zoom in</button><button id="rotate" hidden>Rotate</button></div></div>
+      <p id="maphelp" class="note">Tap a classroom on the map.</p>
+    </section>
+    <section class="edit-card">
+      <div class="edit-head"><h2>Simulate a closure</h2><button id="restore" disabled>Reopen all</button></div>
+      <label for="element">Select a location on the map or from the list</label>
+      <div class="controls"><select id="element" disabled><option value="">Choose a door, corridor or exit</option></select>
+        <button id="toggle" class="primary" disabled>Close location</button></div>
+      <p id="action-status" class="note" aria-live="polite">Choose a starting room first.</p>
+      <div id="chips" aria-label="Closed locations"></div>
+    </section>
+  </div>
+  <footer>Closures apply only to this page. Refresh to reset the exercise.</footer>
+  <noscript>Enable JavaScript to calculate a route.</noscript>
+</main></body></html>
